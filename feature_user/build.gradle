@@ -1,0 +1,29 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+apply from: "../featureConfig.build.gradle"
+
+android {
+    namespace 'com.ls.user'
+
+    defaultConfig {
+    }
+
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+    implementation libs.composeMaterialIconsCore
+
+    implementation project(":library_base")
+
+    implementation libs.camera2
+    implementation libs.cameraCore
+    implementation libs.cameraLifecycle
+    implementation libs.cameraView
+}

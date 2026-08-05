@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <!--
+Android 11及以上需要声明查询的Intent,通过 <queries> 声明后，
+    系统会允许你的应用检测到支持这些 Intent 的应用（例如系统相册、第三方文件管理器等）
+    -->
+    <queries>
+
+        <!-- 指定可以从相册选中图片 -->
+        <intent>
+            <action android:name="android.intent.action.PICK" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+        <!-- 允许用户从任何支持图片选择的应用中选择内容（如文件管理器、相册等 -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
+
+</manifest>

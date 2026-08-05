@@ -1,0 +1,51 @@
+[versions]
+agp = "8.13.0"
+kotlin = "2.2.0"
+material = "1.10.0"
+activity = "1.8.0"
+lifecycle = "2.6.1"
+okhttp = "4.12.0"
+retrofit = "2.11.0"
+security = "1.0.0"
+camerax_version = "1.2.0-alpha04"
+composeBom = "2025.06.01"
+activityCompose = "1.9.3"
+coil = "2.7.0"
+lifecycleRuntimeCompose = "2.8.7"
+navigationCompose = "2.8.9"
+
+[libraries]
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+liveData = { group = "androidx.lifecycle", name = "lifecycle-livedata", version.ref = "lifecycle" }
+viewModel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
+security = { group = "androidx.security", name = "security-crypto", version.ref = "security" }
+
+
+cameraCore = { group = "androidx.camera", name = "camera-core", version.ref = "camerax_version" }
+camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax_version" }
+cameraLifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax_version" }
+cameraView = { group = "androidx.camera", name = "camera-view", version.ref = "camerax_version" }
+
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttpInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofitConverterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+composeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+composeUi = { group = "androidx.compose.ui", name = "ui" }
+composeUiGraphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+composeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
+composeMaterialIconsCore = { group = "androidx.compose.material", name = "material-icons-core" }
+composeMaterialIconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
+activityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+lifecycleRuntimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
+lifecycleViewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+navigationCompose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

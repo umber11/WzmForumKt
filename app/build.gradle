@@ -1,0 +1,84 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+def keystoreProps = new Properties()
+def ksFile = rootProject.file('keystore.properties')
+if (ksFile.exists()) {
+    keystoreProps.load(new FileInputStream(ksFile))
+}
+
+android {
+    namespace 'com.ls.wzmforum'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.ls.wzmforum.kt"
+        minSdk 26
+        targetSdk 34
+        versionCode 202607231
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // 签名配置（敏感信息放在本地 keystore.properties）
+    signingConfigs {
+        debug {
+            storeFile file("../wzmforumkt.jks")
+            storePassword keystoreProps['KEYSTORE_PASSWORD']
+            keyAlias "wzmforumkt"
+            keyPassword keystoreProps['KEY_PASSWORD']
+        }
+        release {
+            storeFile file("../wzmforumkt.jks")
+            storePassword keystoreProps['KEYSTORE_PASSWORD']
+            keyAlias "wzmforumkt"
+            keyPassword keystoreProps['KEY_PASSWORD']
+        }
+
+    }
+
+    buildTypes {
+
+        //指定正式环境关联的签名配置
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true   // 启用混淆
+            shrinkResources true // 移除无用资源文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'//指定模块根目录下的混淆文件
+        }
+        //指定debug测试环境关联的签名配置
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true//说明是测试
+            minifyEnabled false   // 关闭混淆
+            shrinkResources false // 不移除无用资源文件
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+    implementation libs.material
+    implementation libs.navigationCompose
+
+    implementation project(":library_base")
+    implementation project(":feature_home")
+    implementation project(":feature_news")
+    implementation project(":feature_products")
+    implementation project(":feature_user")
+}
