@@ -1,0 +1,55 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace 'com.ls.librarybase'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 26
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+    api libs.activity
+    api libs.liveData
+    api libs.viewModel
+    api libs.security
+
+    api project(":network")
+
+    api platform(libs.composeBom)
+    api libs.composeUi
+    api libs.composeUiGraphics
+    api libs.composeMaterial3
+    implementation libs.composeMaterialIconsCore
+    implementation libs.composeMaterialIconsExtended
+    api libs.activityCompose
+    api libs.lifecycleRuntimeCompose
+    api libs.lifecycleViewModelCompose
+    api libs.navigationCompose
+    api libs.coil
+}
